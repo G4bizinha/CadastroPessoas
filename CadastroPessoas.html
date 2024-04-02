@@ -1,16 +1,95 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <script src="./CadastroPessoas.js"></script>       
+         <script src="./CadastroPessoas.js"></script>   
+         <title>CadastroPessoas</title>    
+         <link rel="icon" type="image/x-icon" href="https://www.flaticon.com/svg/vstatic/svg/3917/3917549.svg?token=exp=1711853342~hmac=e0adf3208ab89a7fd9b2f70ad17a6002">
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link href="https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Rubik+80s+Fade&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Joan&family=Rubik+80s+Fade&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+         <style type="text/css">
+        
+            .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            color: rgb(0, 0, 0);
+            
+          }
+
+            .collapsible {
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+      }
+
+            .box-collapsible{
+            display: flex;
+            justify-content: space-between;
+            }
+
+            .joan-regular {
+            font-family: "Joan", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            }
+
+    
+            .tourney {
+            font-family: "Tourney", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400px;
+            font-style: normal;
+            font-variation-settings:"wdth" 100;
+            }
+
+            .gideon-roman-regular {
+            font-family: "Gideon Roman", serif;
+            font-weight: 400;
+            font-style: normal;
+            }
+
+          
+            .app{
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          }
+
+          table{
+            color: white;
+            font-family: "Gideon Roman", serif;
+            font-style: bold;
+          }
+
+          tbody{
+            color: white;
+            font-family: "Gideon Roman", serif;
+          }
+
+          body {
+            color: white;
+            background-image: url("https://static.vecteezy.com/ti/vetor-gratis/p1/13323703-azul-claro-e-azul-pastel-abstrato-com-padrao-de-luz-neon-estilo-brilhante-gradiente-borrao-moderno-e-colorido-otimo-para-plano-de-fundo-pano-de-fundo-papel-de-parede-capa-poster-banner-ou-panfleto-gratis-vetor.jpg");
+          }
+        </style>
+
     </head>
     <body>
-        <div id="app"/>
 
+        <div id="app" class="app"/>
+    
         <script>
             render();
             loadData();
             showData();
             createTable();
         </script>
+
     </body>
 </html>

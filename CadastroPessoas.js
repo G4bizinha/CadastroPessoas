@@ -3,41 +3,47 @@ const dados = new Array();
 function render() {
     const app = document.getElementById('app');
     app.innerHTML = `
-        <h1>EmpresasDev!</h1>
-        <p>Esse é um parágrafo</p>
-        <button onclick="pop()">Clique aqui</button>
-        <button onclick="createTable()">cria tabela</button>
+        <h1 class="tourney">EmpresasDev!</h1>
+        <p class= "joan-regular">Cadastro de Usuários</p>
+        <button onclick="openAlert()">Novo Usuário</button>
+        <div class="content">
+        </div>
     `;
 }
 
 
-function pop() {
-    dados.pop();
-    render();
-   // createTable();
+function openAlert() {
+    const userID = prompt("Insira o ID do novo usuário:");
+    const userName = prompt("Insira o nome do novo usuário:");
+    const userAge = prompt("Insira a idade do novo usuário:");
+    const userPhone = prompt("Insira o telefone do novo usuário:");
+    const userProfession = prompt("Insira a profissão do novo usuário:");
+
+    const novoRegistro = {
+        ID: userID,
+        Nome: userName,
+        Idade: userAge,
+        Telefone: userPhone,
+        Profissão: userProfession,
+    };
+
+    dados.push(novoRegistro);
+    createTable();
 }
+
+const openAlertBtn = document.getElementById('openAlertBtn');
+openAlertBtn.addEventListener('click', openAlert);
+
+const masculino = 'https://www.flaticon.com/svg/vstatic/svg/3917/3917705.svg?token=exp=1711931720~hmac=4df2d501908734dac35716bb4872d74a';
+const feminino = 'https://www.flaticon.com/svg/vstatic/svg/3917/3917711.svg?token=exp=1711931047~hmac=6b458945d02d58f3313f80dd3e754bd3';
+
+
 function loadData() {
-    //dados.push('João');
-    //dados.push('Maria');
-    //dados.push('José');
-    //dados.push('Ana');
-
-    dados.push({id: 1, nome: 'João', idade: 25});
-    dados.push({id: 2, nome: 'Maria', idade: 30});
-    dados.push({id: 3, nome: 'José', idade: 35});
     
-    let a = new Object();
-    //let a = {};
-    a.id = 4;
-    a.nome = 'Ana';
-    a.idade = 40;
-    dados.push(a);
-    const b = dados[0];
-    console.log('coisa legal-> ')
-    for (let attr in b) {
-        console.log(attr + ' -> ' + b[attr]);
-    }
-
+    dados.push({ID: 1, Foto: 'https://www.flaticon.com/svg/vstatic/svg/3917/3917705.svg?token=exp=1711931720~hmac=4df2d501908734dac35716bb4872d74a', Nome: 'João', Idade: 25, Telefone:51012345678, Profissão: 'QA'});
+    dados.push({ID: 2, Foto: 'https://www.flaticon.com/svg/vstatic/svg/3917/3917711.svg?token=exp=1711931047~hmac=6b458945d02d58f3313f80dd3e754bd3', Nome: 'Maria', Idade: 30, Telefone:5111111111, Profissão: 'RH'});
+    dados.push({ID: 3, Foto: 'https://www.flaticon.com/svg/vstatic/svg/3917/3917705.svg?token=exp=1711931720~hmac=4df2d501908734dac35716bb4872d74a', Nome: 'José', Idade: 35, Telefone:5122222222, Profissão: 'CEO'});
+    
 }
 
 function createTable() {
@@ -45,34 +51,109 @@ function createTable() {
     const table = document.createElement('table');
     const thead = document.createElement('thead');
     const thr = document.createElement('tr');
-    const th1 = document.createElement('th');
-    th1.innerText = 'ID';
+    
+    // Cabeçalho para ID
     const th2 = document.createElement('th');
-    th2.innerText = 'Nome';
+    th2.innerText = 'ID';
+    
+    // Cabeçalho para Foto
     const th3 = document.createElement('th');
-    th3.innerText = 'Idade';
-    thr.appendChild(th1);
+    th3.innerText = 'Foto';
+    
+    // Cabeçalho para Nome
+    const th4 = document.createElement('th');
+    th4.innerText = 'Nome';
+    
+    // Cabeçalho para Telefone
+    const th5 = document.createElement('th');
+    th5.innerText = 'Telefone';
+    
+    // Cabeçalho para Profissão
+    const th6 = document.createElement('th');
+    th6.innerText = 'Profissão';
+
     thr.appendChild(th2);
     thr.appendChild(th3);
+    thr.appendChild(th4);
+    thr.appendChild(th5);
+    thr.appendChild(th6);
+    
     thead.appendChild(thr);
     const tbody = document.createElement('tbody');
+
     dados.forEach ((dado) => {
         const tr = document.createElement('tr');
-        const td1 = document.createElement('td');
-        td1.innerText = dado.id;
+        
+        // Célula para ID
         const td2 = document.createElement('td');
-        td2.innerText = dado.nome;
+        td2.innerText = dado.ID;
+        
+        // Célula para Foto
         const td3 = document.createElement('td');
-        td3.innerText = dado.idade;
-        tr.appendChild(td1); 
+        const img = document.createElement('img');
+        img.src = dado.Foto; // Substitua com o caminho da imagem
+        img.width = 30; // Ajuste o tamanho conforme necessário
+        img.height = 30;
+        td3.appendChild(img);
+        
+        // Célula para Nome
+        const td4 = document.createElement('td');
+        td4.innerText = dado.Nome;
+        
+        // Célula para Telefone
+        const td5 = document.createElement('td');
+        td5.innerText = dado.Telefone;
+        
+        // Célula para Profissão
+        const td6 = document.createElement('td');
+        td6.innerText = dado.Profissão;
+
         tr.appendChild(td2);
         tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+        tr.appendChild(td6);
+
         tbody.appendChild(tr);
-    })
+    });
     
     table.appendChild(thead);
     table.appendChild(tbody);
     app.appendChild(table);
+}
+
+
+function styleTable() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .user-table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .user-table th,
+        .user-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .user-table th {
+            background-color: #f2f2f2;
+        }
+        .user-table tr:last-child td {
+            border-bottom: none;
+        }
+        .user-table img {
+            border-radius: 50%;
+        }
+        #app {
+            text-align: center;
+            margin-top: 50px;
+        }
+    `;
+    document.head.appendChild(style);
 }
 
 function showData() {
