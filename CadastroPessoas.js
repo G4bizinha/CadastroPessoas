@@ -28,8 +28,75 @@ function openAlert() {
     };
 
     dados.push(novoRegistro);
-    createTable();
+    addRowToTable(novoRegistro); // Adiciona uma nova linha à tabela
 }
+
+function addRowToTable(dado) {
+    const tbody = document.querySelector('tbody');
+
+    // Cria uma nova linha
+    const tr = document.createElement('tr');
+
+    // Célula para ID
+    const td2 = document.createElement('td');
+    td2.innerText = dado.ID;
+
+    // Célula para Foto
+    const td3 = document.createElement('td');
+    const img = document.createElement('img');
+    img.src = dado.Foto; // Substitua com o caminho da imagem
+    img.width = 30; // Ajuste o tamanho conforme necessário
+    img.height = 30;
+    td3.appendChild(img);
+
+    // Célula para Nome
+    const td4 = document.createElement('td');
+    td4.innerText = dado.Nome;
+
+    // Célula para Telefone
+    const td5 = document.createElement('td');
+    td5.innerText = dado.Telefone;
+
+    // Célula para Profissão
+    const td6 = document.createElement('td');
+    td6.innerText = dado.Profissão;
+
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+    tr.appendChild(td5);
+    tr.appendChild(td6);
+
+    tbody.appendChild(tr); // Adiciona a nova linha ao tbody existente
+}
+
+
+// Obtenha o modal
+const modal = document.getElementById("myModal");
+
+// Obtenha o botão que abre o modal
+const btn = document.getElementById("openAlertBtn");
+
+// Obtenha o elemento <span> que fecha o modal
+const span = document.getElementsByClassName("close")[0];
+
+// Quando o usuário clicar no botão, abra o modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// Quando o usuário clicar no <span> (x), feche o modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Quando o usuário clicar em qualquer lugar fora do modal, feche-o
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 
 const openAlertBtn = document.getElementById('openAlertBtn');
 openAlertBtn.addEventListener('click', openAlert);
@@ -40,9 +107,29 @@ const feminino = 'https://www.flaticon.com/svg/vstatic/svg/3917/3917711.svg?toke
 
 function loadData() {
     
-    dados.push({ID: 1, Foto: 'https://www.flaticon.com/svg/vstatic/svg/3917/3917705.svg?token=exp=1711931720~hmac=4df2d501908734dac35716bb4872d74a', Nome: 'João', Idade: 25, Telefone:51012345678, Profissão: 'QA'});
-    dados.push({ID: 2, Foto: 'https://www.flaticon.com/svg/vstatic/svg/3917/3917711.svg?token=exp=1711931047~hmac=6b458945d02d58f3313f80dd3e754bd3', Nome: 'Maria', Idade: 30, Telefone:5111111111, Profissão: 'RH'});
-    dados.push({ID: 3, Foto: 'https://www.flaticon.com/svg/vstatic/svg/3917/3917705.svg?token=exp=1711931720~hmac=4df2d501908734dac35716bb4872d74a', Nome: 'José', Idade: 35, Telefone:5122222222, Profissão: 'CEO'});
+    dados.push({
+        ID: 1, Foto: 'https://www.flaticon.com/svg/vstatic/svg/3917/3917705.svg?token=exp=1711931720~hmac=4df2d501908734dac35716bb4872d74a', 
+        Nome: 'João', 
+        Idade: 25, 
+        Telefone:51012345678, 
+        Profissão: 'QA'
+    });
+    dados.push({
+        ID: 2, 
+        Foto: 'https://www.flaticon.com/svg/vstatic/svg/3917/3917711.svg?token=exp=1711931047~hmac=6b458945d02d58f3313f80dd3e754bd3', 
+        Nome: 'Maria', 
+        Idade: 30, 
+        Telefone:5111111111, 
+        Profissão: 'RH'
+    });
+    dados.push({
+        ID: 3, 
+        Foto: 'https://www.flaticon.com/svg/vstatic/svg/3917/3917705.svg?token=exp=1711931720~hmac=4df2d501908734dac35716bb4872d74a', 
+        Nome: 'José', 
+        Idade: 35, 
+        Telefone:5122222222, 
+        Profissão: 'CEO'
+    });
     
 }
 
