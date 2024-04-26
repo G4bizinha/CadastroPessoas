@@ -13,22 +13,8 @@ function render() {
 
 
 function openAlert() {
-    const userID = prompt("Insira o ID do novo usuário:");
-    const userName = prompt("Insira o nome do novo usuário:");
-    const userAge = prompt("Insira a idade do novo usuário:");
-    const userPhone = prompt("Insira o telefone do novo usuário:");
-    const userProfession = prompt("Insira a profissão do novo usuário:");
-
-    const novoRegistro = {
-        ID: userID,
-        Nome: userName,
-        Idade: userAge,
-        Telefone: userPhone,
-        Profissão: userProfession,
-    };
-
-    dados.push(novoRegistro);
-    addRowToTable(novoRegistro); // Adiciona uma nova linha à tabela
+    const modal = document.getElementById('myModal');
+    modal.style.display = "block";
 }
 
 function addRowToTable(dado) {
@@ -71,44 +57,16 @@ function addRowToTable(dado) {
 }
 
 
-// Obtenha o modal
-const modal = document.getElementById("myModal");
-
-// Obtenha o botão que abre o modal
-const btn = document.getElementById("openAlertBtn");
-
-// Obtenha o elemento <span> que fecha o modal
-const span = document.getElementsByClassName("close")[0];
-
-// Quando o usuário clicar no botão, abra o modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// Quando o usuário clicar no <span> (x), feche o modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// Quando o usuário clicar em qualquer lugar fora do modal, feche-o
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
 
 
-const openAlertBtn = document.getElementById('openAlertBtn');
-openAlertBtn.addEventListener('click', openAlert);
-
-const masculino = 'https://www.flaticon.com/svg/vstatic/svg/3917/3917705.svg?token=exp=1711931720~hmac=4df2d501908734dac35716bb4872d74a';
+const masculino = 'https://cdn-icons.flaticon.com/svg/3917/3917705.svg?token=exp=1712459792~hmac=fac0ca4bff68aaea465491af308a61fa';
 const feminino = 'https://www.flaticon.com/svg/vstatic/svg/3917/3917711.svg?token=exp=1711931047~hmac=6b458945d02d58f3313f80dd3e754bd3';
 
 
 function loadData() {
     
     dados.push({
-        ID: 1, Foto: 'https://www.flaticon.com/svg/vstatic/svg/3917/3917705.svg?token=exp=1711931720~hmac=4df2d501908734dac35716bb4872d74a', 
+        ID: 1, Foto: masculino, 
         Nome: 'João', 
         Idade: 25, 
         Telefone:51012345678, 
